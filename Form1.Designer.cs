@@ -172,6 +172,8 @@
             // 
             // language_combobox
             // 
+            this.language_combobox.Cursor = System.Windows.Forms.Cursors.Help;
+            this.language_combobox.Enabled = false;
             this.language_combobox.FormattingEnabled = true;
             this.language_combobox.Items.AddRange(new object[] {
             "English",
@@ -180,7 +182,8 @@
             this.language_combobox.Location = new System.Drawing.Point(350, 8);
             this.language_combobox.Name = "language_combobox";
             this.language_combobox.Size = new System.Drawing.Size(121, 21);
-            this.language_combobox.TabIndex = 4;
+            this.language_combobox.Sorted = true;
+            this.language_combobox.TabIndex = 1;
             this.language_combobox.Text = "Language";
             // 
             // action_groupbox
@@ -223,6 +226,7 @@
             // 
             // runapp_input
             // 
+            this.runapp_input.Enabled = false;
             this.runapp_input.Location = new System.Drawing.Point(185, 43);
             this.runapp_input.Name = "runapp_input";
             this.runapp_input.ReadOnly = true;
@@ -245,6 +249,7 @@
             // runall_check
             // 
             this.runall_check.AutoSize = true;
+            this.runall_check.Enabled = false;
             this.runall_check.Location = new System.Drawing.Point(185, 66);
             this.runall_check.Name = "runall_check";
             this.runall_check.Size = new System.Drawing.Size(59, 17);
@@ -331,6 +336,7 @@
             this.starter_button.TabIndex = 6;
             this.starter_button.Text = "Start";
             this.starter_button.UseVisualStyleBackColor = true;
+            this.starter_button.Click += new System.EventHandler(this.starter_button_Click);
             // 
             // timer_progress
             // 

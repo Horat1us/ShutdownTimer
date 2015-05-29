@@ -10,3 +10,9 @@ c:\users\inferik\documents\visual studio 2013\Projects\ShutdownTimer Pro\Shutdow
 C:\Users\Inferik\Documents\Visual Studio 2013\Projects\ShutdownTimer\ShutdownTimer\bin\Debug\ShutdownTimer Pro.exe.config
 C:\Users\Inferik\Documents\Visual Studio 2013\Projects\ShutdownTimer\ShutdownTimer\obj\Debug\ShutdownTimer Pro.exe
 C:\Users\Inferik\Documents\Visual Studio 2013\Projects\ShutdownTimer\ShutdownTimer\obj\Debug\ShutdownTimer Pro.pdb
+C:\Users\Inferik\Documents\Visual Studio 2013\Projects\ShutdownTimer\ShutdownTimer\bin\Debug\ShutdownTimer Pro.exe
+C:\Users\Inferik\Documents\Visual Studio 2013\Projects\ShutdownTimer\ShutdownTimer\bin\Debug\ShutdownTimer Pro.pdb
+C:\Users\Inferik\Documents\Visual Studio 2013\Projects\ShutdownTimer\ShutdownTimer\obj\Debug\ShutdownTimer Pro.csprojResolveAssemblyReference.cache
+C:\Users\Inferik\Documents\Visual Studio 2013\Projects\ShutdownTimer\ShutdownTimer\obj\Debug\ShutdownTimer_Pro.ShutdownTimer.resources
+C:\Users\Inferik\Documents\Visual Studio 2013\Projects\ShutdownTimer\ShutdownTimer\obj\Debug\ShutdownTimer_Pro.Properties.Resources.resources
+C:\Users\Inferik\Documents\Visual Studio 2013\Projects\ShutdownTimer\ShutdownTimer\obj\Debug\ShutdownTimer Pro.csproj.GenerateResource.Cache

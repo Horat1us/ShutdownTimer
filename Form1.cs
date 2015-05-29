@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
 
 namespace ShutdownTimer_Pro
 {
@@ -190,6 +192,141 @@ namespace ShutdownTimer_Pro
             this.config.forcedAction =
                 this.forcedAction =
                    !this.forcedAction;
+        }
+
+        private void changeElementsStatus(bool status)
+        {
+            hours_updown.Enabled = status;
+            minutes_updown.Enabled = status;
+            seconds_updown.Enabled = status;
+            timer_disabler.Enabled = status;
+            shutdown_combo.Enabled = status;
+            reboot_combo.Enabled = status;
+            sleep_combo.Enabled = status;
+            hiber_combo.Enabled = status;
+            forced_check.Enabled = status;
+            disable_combo.Enabled = status;
+            runall_check.Enabled = status;
+            runapp_select.Enabled = status;
+        }
+        private void changeStartButton()
+        {
+            starter_button.Text = this.timer_on ? "Stop" : "Start";
+        }
+        private bool timer_on = false;
+        public  System.Windows.Forms.Timer timer =
+           new System.Windows.Forms.Timer();
+        public int timerNow, timerEnd;
+        private void starter_button_Click(object sender, EventArgs e)
+        {
+            this.timer_on = !this.timer_on;
+            if(this.timer_on)
+            {
+               
+                // Starting tick is 0
+                this.timerNow = 0;
+                this.timerEnd = 0;
+                // Counting seconds to timer end
+                for (int i = 0; i < 3; i++)
+                    this.timerEnd +=
+                        this.timerData[i]
+                        * Convert.ToInt32((Math.Pow(60, 2-i)));
+                MessageBox.Show(
+                    "Timer is on. " 
+                    + this.timerEnd 
+                    + " seconds"
+                );
+                // Tick function is this.timerTick
+                this.timer.Tick += new EventHandler(this.timerTick);
+                this.timer.Interval = 1000; // One second interval
+                this.timer_progress.Maximum = this.timerEnd;
+                this.timer.Start();
+            }
+            else
+            {
+                MessageBox.Show("Timer is off");
+                // Stopping timer
+                this.timer.Stop();
+                this.timer_progress.Value = 0;
+            }
+            this.changeStartButton();
+            this.changeElementsStatus(!this.timer_on);
+        }
+        private void timerTick(Object sender, EventArgs e)
+        {
+            if(++this.timerNow>=this.timerEnd)
+            {
+                this.doAction();
+                this.timer_on = !this.timer_on;
+                this.changeStartButton();
+                this.changeElementsStatus(this.timer_on);
+                this.timer_progress.Value = 0;
+            }
+            else
+            {
+                this.timer_progress.Value = this.timerNow;
+            }
+        }
+        private void doAction()
+        {
+            if (runall_check.Checked)
+                this.runApp();
+            string command = "";
+            if(this.actionType==4)
+            {
+                command = 
+                    "rundll32.exe powrprof.dll,SetSuspendState 0,1,0";
+            }
+            else if(this.actionType!=0 && this.actionType<5)
+            {
+                command = "shutdown ";
+                switch(this.actionType)
+                {
+                    case 1:
+                        command += "/s";
+                        
+                        break;
+                    case 2:
+                        command += "/h";
+                        break;
+                    case 3:
+                        command += "/r";
+                        break;
+                }
+                // Forced mode, if on
+                if (forced_check.Checked)
+                        command += " /f";
+            }
+            if(command.Length>0)
+            {
+                Process.Start(
+                    "cmd.exe",
+                    "/C " + command
+                );
+            }
+        }
+        private void runApp()
+        {
+            if(File.Exists(this.runapp_input.Text))
+            {
+                try
+                {
+                    Process.Start(this.runapp_input.Text);
+                }
+                catch
+                {
+                    MessageBox.Show(
+                        "Unknown error"
+                        );
+                }
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Error: \n\r File: '"
+                    + this.runapp_input.Text
+                    + "' not exists");
+            }
         }
     }
 }
