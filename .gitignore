@@ -45,3 +45,5 @@ Temporary Items
 bin/Debug/ShutdownTimer Pro.exe.config
 *.pdb
 bin/Debug/ShutdownTimer Pro.vshost.exe.config
+*.suo
+obj/Debug/DesignTimeResolveAssemblyReferences.cache
