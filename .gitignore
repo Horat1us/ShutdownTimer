@@ -47,5 +47,3 @@ bin/Debug/ShutdownTimer Pro.exe.config
 bin/Debug/ShutdownTimer Pro.vshost.exe.config
 *.suo
 obj/Debug/DesignTimeResolveAssemblyReferences.cache
-*.cache
-ShutdownTimer Pro.v12.suo
