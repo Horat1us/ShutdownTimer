@@ -256,15 +256,19 @@ namespace ShutdownTimer_Pro
         {
             if(++this.timerNow>=this.timerEnd)
             {
-                this.doAction();
                 this.timer_on = !this.timer_on;
                 this.changeStartButton();
                 this.changeElementsStatus(this.timer_on);
                 this.timer_progress.Value = 0;
+                this.doAction();
             }
             else
             {
                 this.timer_progress.Value = this.timerNow;
+            }
+            if(!this.timer_on)
+            {
+                this.timer.Stop();
             }
         }
         private void doAction()
